@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "sika"
+    }
+  },
+  "defaultProject": "sika",
+  "cli": {
+    "analytics": false
+  }
 }
