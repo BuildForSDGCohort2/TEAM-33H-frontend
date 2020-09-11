@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { PasswordValidator } from '../password.validator';
 import { IUser } from '../user.model';
@@ -24,7 +25,7 @@ export class RegisterComponent implements OnInit {
 
   // getters to prevent cluttering template with repetitive code
 
-  constructor(private fb: FormBuilder, private auth: AuthService) { }
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group(
@@ -51,13 +52,14 @@ export class RegisterComponent implements OnInit {
    }
   saveUser(formValues: IUser) {
     this.auth.register(formValues).subscribe(result => {
-      if (result) { this.success = true; this.onSuccess();  console.log(result); }
-    }, err => {this.error = err.error.error; this.onError(); console.log(err);
+      if (result) { this.success = true; this.onSuccess(); }
+    }, err => {this.error = err.error.error; this.onError();
     });
   }
   onSuccess() {
   setTimeout(() => {
     this.success = false;
+    this.router.navigate(['/user/signin']);
   }, 5000);
   }
   onError() {

@@ -7,10 +7,11 @@ import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
-  declarations: [UserComponent, RegisterComponent],
+  declarations: [UserComponent, RegisterComponent, LoginComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
@@ -18,7 +19,6 @@ import { AuthService } from './auth.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService],
-  exports: [UserComponent, RegisterComponent]
+  providers: [AuthService]
 })
 export class UserModule { }
