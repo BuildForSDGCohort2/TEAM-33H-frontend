@@ -50,7 +50,8 @@ export class RegisterComponent implements OnInit {
   saveUser(formValues: IUser) {
     this.auth.register(formValues).subscribe(result => {
       if (result) { this.success = true; this.onSuccess(); }
-    }, err => {this.error = err.error.error; this.onError(); });
+    }, err => {this.error = err.error.error; this.onError(); console.log(err);
+    });
   }
   onSuccess() {
   setTimeout(() => {

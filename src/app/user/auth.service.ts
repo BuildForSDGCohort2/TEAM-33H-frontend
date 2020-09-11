@@ -9,7 +9,7 @@ import { HttpClient} from '@angular/common/http';
 export class AuthService {
   constructor(private http: HttpClient) { }
   register(formValues: IUser): Observable<any> {
-    return this.http.post('https://sikabe.herokuapp.com/api/user/register', formValues, {observe: 'response'});
+    return this.http.post('https://sikabe.herokuapp.com/api/user/register', formValues, {observe: 'response', responseType: 'text'});
   }
 
 }
