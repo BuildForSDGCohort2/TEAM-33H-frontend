@@ -9,7 +9,15 @@ import { HttpClient} from '@angular/common/http';
 export class AuthService {
   constructor(private http: HttpClient) { }
   register(formValues: IUser): Observable<any> {
-    return this.http.post('https://sikabe.herokuapp.com/api/user/register', formValues, {observe: 'response', responseType: 'text'});
+    const user = {
+      email: formValues.email,
+      firstName: formValues.firstName,
+      lastName: formValues.lastName,
+      mobilePhoneNumber: formValues.mobilePhoneNumber,
+      password: formValues.password,
+      identityNumber: formValues.identityNumber
+    };
+    return this.http.post('https://sikabe.herokuapp.com/api/v1/user/register', user, {observe: 'response', responseType: 'text'});
   }
 
 }

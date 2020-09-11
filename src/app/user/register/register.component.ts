@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   firstName: FormControl;
   lastName: FormControl;
   mobilePhoneNumber: FormControl;
+  identityNumber: FormControl;
   password: FormControl;
   confirmPassword: FormControl;
   success: boolean;
@@ -32,6 +33,7 @@ export class RegisterComponent implements OnInit {
         firstName: this.firstName = new FormControl(),
         lastName: this.lastName = new FormControl(),
         mobilePhoneNumber: this.mobilePhoneNumber = new FormControl(),
+        identityNumber: this.identityNumber = new FormControl(),
         password: this.password = new FormControl(
           '',
           [
@@ -49,7 +51,7 @@ export class RegisterComponent implements OnInit {
    }
   saveUser(formValues: IUser) {
     this.auth.register(formValues).subscribe(result => {
-      if (result) { this.success = true; this.onSuccess(); }
+      if (result) { this.success = true; this.onSuccess();  console.log(result); }
     }, err => {this.error = err.error.error; this.onError(); console.log(err);
     });
   }

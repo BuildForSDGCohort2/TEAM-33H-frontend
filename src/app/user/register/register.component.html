@@ -39,6 +39,15 @@
               </div>
             </div>
             <div class="form-group">
+              <label for="firstName">Identity Number</label>
+              <input formControlName="identityNumber" type="number" class="form-control" name="identityNumber"
+              [class.is-invalid]="identityNumber.invalid && identityNumber.touched"/>
+              <div *ngIf="identityNumber.invalid && identityNumber.touched">
+                <small *ngIf="identityNumber.errors?.required" class="text-danger">Identity is required</small>
+                <small *ngIf="identityNumber.errors?.identityNumber" class="text-danger">Please enter a valid name</small>
+              </div>
+            </div>
+            <div class="form-group">
               <label>Phone number</label>
               <div class="input-group mb-3">
                   <div class="input-group-prepend">
