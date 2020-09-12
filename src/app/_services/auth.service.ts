@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUser, User } from './user.model';
+import { IUser, User } from '../user/user.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';

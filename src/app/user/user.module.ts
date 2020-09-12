@@ -6,8 +6,10 @@ import { UserComponent } from './user.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from './auth.service';
+import { AuthService } from '../_services/auth.service';
 import { LoginComponent } from './login/login.component';
+import { AlertsComponent } from '../shared/alerts/alerts.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { LoginComponent } from './login/login.component';
     UserRoutingModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   providers: [AuthService]
 })
