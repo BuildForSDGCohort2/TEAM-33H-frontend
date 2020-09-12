@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit {
   confirmPassword: FormControl;
   success: boolean;
   error: any;
+  loading: boolean;
 
   // getters to prevent cluttering template with repetitive code
 
@@ -51,6 +52,10 @@ export class RegisterComponent implements OnInit {
     );
    }
   saveUser(formValues: IUser) {
+    if (!this.registrationForm.valid) {
+      return;
+    }
+    this.loading = true;
     this.auth.register(formValues).subscribe(result => {
       if (result) { this.success = true; this.onSuccess(); }
     }, err => {this.error = err.error.error; this.onError();
@@ -60,11 +65,13 @@ export class RegisterComponent implements OnInit {
   setTimeout(() => {
     this.success = false;
     this.router.navigate(['/user/signin']);
+    this.loading = false;
   }, 5000);
   }
   onError() {
     setTimeout(() => {
       this.error = undefined;
+      this.loading = false;
     }, 5000);
   }
 }
