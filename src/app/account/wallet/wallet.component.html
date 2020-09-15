@@ -1,1 +1,61 @@
-<p>wallet works!</p>
+  <mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="walletFormGroup">
+      <form [formGroup]="walletFormGroup">
+        <ng-template matStepLabel>Fill out your card details</ng-template>
+        <mat-form-field appearance="outline" class="col-md-12">
+          <mat-label>Card Owner</mat-label>
+          <input matInput  type="text" formControlName="cardOwner" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="col-md-12">
+            <mat-label>Card Number</mat-label>
+            <input matInput type="text" formControlName="cardNumber" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline"class="col-md-8">
+            <mat-label>Expiration Date</mat-label>
+            <input matInput type="date" formControlName="expirationDate" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="col-md-4">
+            <mat-label>CVC</mat-label>
+            <input matInput type="text" formControlName="cvc" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="depositFormGroup" label="Make a deposit">
+      <form [formGroup]="depositFormGroup">
+        <mat-form-field appearance="outline" class="col-md-12">
+          <mat-label>Account Number</mat-label>
+          <input matInput type="text" formControlName="accountNumber"
+                 required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="col-md-12">
+            <mat-label>Stokvel</mat-label>
+            <input matInput type="tex" formControlName="stokvel" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="col-md-12">
+            <mat-label>Reference</mat-label>
+            <input matInput type="text" formControlName="reference" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="col-md-12">
+            <mat-label>Amount</mat-label>
+            <input matInput type="text" formControlName="account" required>
+        </mat-form-field>
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>Your deposit is been processed. The Deposit will reflect on your transaction history.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+  
