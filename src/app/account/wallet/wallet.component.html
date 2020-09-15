@@ -1,1 +1,72 @@
-<p>wallet works!</p>
+  <mat-horizontal-stepper [linear]="false" #stepper>
+    <mat-step [stepControl]="walletFormGroup">
+      <form [formGroup]="walletFormGroup">
+        <ng-template matStepLabel>Fill out your card details</ng-template>
+        <mat-form-field appearance="outline" class="col-md-12">
+          <mat-label>Card Owner</mat-label>
+          <input matInput  type="text" formControlName="cardOwner" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="col-md-12">
+            <mat-label>Card Number</mat-label>
+            <input matInput type="text" formControlName="cardNumber" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline"class="col-md-8">
+            <mat-label>Expiration Date</mat-label>
+            <input matInput type="date" formControlName="expirationDate" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="col-md-4">
+            <mat-label>CVC</mat-label>
+            <input matInput type="text" formControlName="cvc" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="depositFormGroup" label="Make a deposit">
+      <form [formGroup]="depositFormGroup">
+        <mat-form-field appearance="outline" class="col-md-12">
+          <mat-label>Account Number</mat-label>
+          <input matInput type="text" formControlName="accountNumber"
+                 required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="col-md-12">
+            <mat-label>Stokvel</mat-label>
+            <input matInput type="tex" formControlName="stokvel" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="col-md-12">
+            <mat-label>Reference</mat-label>
+            <input matInput type="text" formControlName="reference" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="col-md-12">
+            <mat-label>Amount</mat-label>
+            <input matInput type="text" formControlName="amount" required>
+        </mat-form-field>
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <mat-card class="example-card m-auto">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image text-white"></div>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>Building Stokvel</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image class="check-image" src="../../../assets/images/done_outline-24px.svg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p class="text-center">
+            Payment successful!
+          </p>
+        </mat-card-content>
+        <mat-card-actions class="text-center">
+          <button mat-button routerLink="/account/transactions">View Transactions</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-step>
+  </mat-horizontal-stepper>
+  

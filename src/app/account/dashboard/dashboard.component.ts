@@ -21,10 +21,10 @@ export class DashboardComponent {
       }
 
       return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
+        { title: 'Wallet Information', cols: 2, rows: 1 },
+        { title: 'Latest Transactions', cols: 1, rows: 1 },
+        { title: 'Notifications', cols: 1, rows: 2 },
+        { title: 'Stokvel', cols: 1, rows: 1 }
       ];
     })
   );
