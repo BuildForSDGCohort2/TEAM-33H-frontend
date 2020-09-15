@@ -1,7 +1,7 @@
   <mat-horizontal-stepper [linear]="false" #stepper>
     <mat-step [stepControl]="walletFormGroup">
       <form [formGroup]="walletFormGroup">
-        <ng-template matStepLabel>Fill out your card details</ng-template>
+        <ng-template matStepLabel>Card Details</ng-template>
         <mat-form-field appearance="outline" class="col-md-12">
           <mat-label>Card Owner</mat-label>
           <input matInput  type="text" formControlName="cardOwner" required>

@@ -19,6 +19,8 @@ import { MatInputModule } from '@angular/material/input';
 import { WalletComponent } from './wallet/wallet.component';
 import { StokvetComponent } from './stokvet/stokvet.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class AccountModule { }

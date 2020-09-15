@@ -1,1 +1,117 @@
-<p>stokvet works!</p>
+
+<form [formGroup]="formGroup">
+  <mat-horizontal-stepper #stepper formArrayName="formArray" [linear]="false">
+    <mat-step formGroupName="0" [stepControl]="formArray?.get([0])">
+      <ng-template matStepLabel>Stokvel Details</ng-template>
+      <mat-form-field class="col-md-6">
+        <mat-label>Group name</mat-label>
+        <input matInput formControlName="firstNameFormCtrl" required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6">
+        <mat-label>Purpose</mat-label>
+        <input matInput formControlName="lastNameFormCtrl" required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-md-6">
+          <mat-label>Manager</mat-label>
+          <input matInput formControlName="lastNameFormCtrl" sr-only>
+      </mat-form-field>
+      <mat-form-field class="col-md-6">
+        <mat-label>Account Number</mat-label>
+        <input matInput formControlName="lastNameFormCtrl" sr-only>
+    </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step formGroupName="1" [stepControl]="formArray?.get([1])">
+      <ng-template matStepLabel>
+        <div>Members</div>
+      </ng-template>
+      <div class="row">
+        <mat-form-field class="col-md-4">
+            <mat-label>Firstname</mat-label>
+            <input matInput formControlName="emailFormCtrl">
+            <mat-error>The input is invalid.</mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-md-4">
+            <mat-label>Lastname</mat-label>
+            <input matInput formControlName="emailFormCtrl">
+            <mat-error>The input is invalid.</mat-error>
+          </mat-form-field>
+          <div class="col-md-4">
+              <button mat-button>add</button>
+          </div>
+    
+      </div>
+      <div class="mat-elevation-z8">
+        <table mat-table  [dataSource]="dataSource">
+      
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef > No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef > Firstname </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef> Lastname </th>
+            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="symbol">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+      
+    
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Confirm your information</ng-template>
+      <mat-card class="example-card m-auto">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image text-white"></div>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>Building Stokvel</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image class="check-image" src="../../../assets/images/done_outline-24px.svg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p class="text-center">
+            Stokvel form completed
+          </p>
+        </mat-card-content>
+        <mat-card-actions class="text-center">
+          <button mat-button routerLink="/account/transactions">Submit</button>
+        </mat-card-actions>
+      </mat-card>
+      <div>
+        <button mat-button>Done</button>
+        <button type="button" mat-button >Reset</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</form>
+
+
