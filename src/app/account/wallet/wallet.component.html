@@ -1,4 +1,4 @@
-  <mat-horizontal-stepper [linear]="true" #stepper>
+  <mat-horizontal-stepper [linear]="false" #stepper>
     <mat-step [stepControl]="walletFormGroup">
       <form [formGroup]="walletFormGroup">
         <ng-template matStepLabel>Fill out your card details</ng-template>
@@ -40,7 +40,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline" class="col-md-12">
             <mat-label>Amount</mat-label>
-            <input matInput type="text" formControlName="account" required>
+            <input matInput type="text" formControlName="amount" required>
         </mat-form-field>
 
         <div>
@@ -51,11 +51,22 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
-      <p>Your deposit is been processed. The Deposit will reflect on your transaction history.</p>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
+      <mat-card class="example-card m-auto">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image text-white"></div>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>Building Stokvel</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image class="check-image" src="../../../assets/images/done_outline-24px.svg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p class="text-center">
+            Payment successful!
+          </p>
+        </mat-card-content>
+        <mat-card-actions class="text-center">
+          <button mat-button routerLink="/account/transactions">View Transactions</button>
+        </mat-card-actions>
+      </mat-card>
     </mat-step>
   </mat-horizontal-stepper>
   
