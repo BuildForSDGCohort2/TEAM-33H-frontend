@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '@app/helpers/auth.guard';
 
 import { AccountComponent } from './account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -10,6 +11,7 @@ import { WalletComponent } from './wallet/wallet.component';
 
 const routes: Routes = [{
   path: '', component: AccountComponent,
+  canActivate: [AuthGuard],
   children: [
     { path: '', component: DashboardComponent },
     { path: 'wallet', component: WalletComponent },
