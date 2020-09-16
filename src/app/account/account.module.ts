@@ -21,10 +21,12 @@ import { StokvetComponent } from './stokvet/stokvet.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
-  declarations: [AccountComponent, DashboardComponent, WalletComponent, StokvetComponent],
+  declarations: [AccountComponent, DashboardComponent, WalletComponent, StokvetComponent, TransactionsComponent, LogoutComponent],
   imports: [
     CommonModule,
     AccountRoutingModule,

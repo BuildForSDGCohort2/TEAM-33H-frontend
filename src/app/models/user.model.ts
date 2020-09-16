@@ -5,6 +5,7 @@ export interface IUser {
     mobilePhoneNumber: number;
     identityNumber: number;
     password: string;
+    token: string;
 }
 
 export class User implements IUser {
@@ -14,6 +15,7 @@ export class User implements IUser {
         public lastName: string,
         public mobilePhoneNumber: number,
         public identityNumber: number,
-        public password: string
+        public password: string,
+        public token: string
     ) {}
 }
