@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { IUser, User } from '../user/user.model';
+import { IUser, User } from '../models/user.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+
+import { environment } from '@environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,7 @@ export class AuthService {
       password: formValues.password,
       identityNumber: formValues.identityNumber
     };
-    return this.http.post('https://sikabe.herokuapp.com/api/v1/user/register', user, { observe: 'response' });
+    return this.http.post(`${environment.apiUrl}/api/v1/user/register`, user, { observe: 'response' });
   }
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
@@ -33,11 +35,10 @@ export class AuthService {
       email: formValues.email,
       password: formValues.password
     };
-    return this.http.post('https://sikabe.herokuapp.com/api/v1/user/signin', userData, { observe: 'response' })
+    return this.http.post(`${environment.apiUrl}/api/v1/user/signin`, userData, { observe: 'response' })
       .pipe(map(user => {
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
-        console.log(user);
         return user;
       }));
   }
