@@ -29,7 +29,7 @@
 <main>
   <router-outlet></router-outlet>
 </main>
-<div class="jumbotron text-center bg-dark" style="margin-bottom:0">
+<div *ngIf="!currentUser" class="jumbotron text-center bg-dark" style="margin-bottom:0">
   
 </div>
 
