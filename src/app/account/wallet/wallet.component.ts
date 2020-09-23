@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { ICard, IDeposit } from '@app/models/wallet.model';
+import { WalletService } from '@app/_services/wallet.service';
 
 @Component({
   selector: 'app-wallet',
@@ -11,7 +13,7 @@ export class WalletComponent implements OnInit {
   depositFormGroup: FormGroup;
 
   // tslint:disable-next-line: variable-name
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, private walletService: WalletService) {}
 
   ngOnInit() {
     this.walletFormGroup = this._formBuilder.group({
@@ -26,5 +28,11 @@ export class WalletComponent implements OnInit {
       reference: new FormControl('', Validators.required),
       amount: new FormControl('', Validators.required)
     });
+  }
+  onSubmit(formValues: ICard) {
+    this.walletService.storeCard(formValues);
+  }
+  onSubmitDeposit(formValues: IDeposit) {
+    this.walletService.deposit(formValues);
   }
 }

@@ -1,6 +1,6 @@
   <mat-horizontal-stepper [linear]="false" #stepper>
     <mat-step [stepControl]="walletFormGroup">
-      <form [formGroup]="walletFormGroup">
+      <form [formGroup]="walletFormGroup" (ngSubmit)="onSubmit(walletFormGroup.value)">
         <ng-template matStepLabel>Card Details</ng-template>
         <mat-form-field appearance="outline" class="col-md-12">
           <mat-label>Card Owner</mat-label>
@@ -19,12 +19,12 @@
             <input matInput type="text" formControlName="cvc" required>
         </mat-form-field>
         <div>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button matStepperNext >Next</button>
         </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="depositFormGroup" label="Make a deposit">
-      <form [formGroup]="depositFormGroup">
+      <form [formGroup]="depositFormGroup" (ngSubmit)="onSubmitDeposit(depositFormGroup.value)">
         <mat-form-field appearance="outline" class="col-md-12">
           <mat-label>Account Number</mat-label>
           <input matInput type="text" formControlName="accountNumber"

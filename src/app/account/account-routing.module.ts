@@ -14,7 +14,7 @@ const routes: Routes = [{
   canActivate: [AuthGuard],
   children: [
     { path: '', component: DashboardComponent },
-    { path: 'wallet', component: WalletComponent },
+    { path: 'deposit', component: WalletComponent },
     { path: 'stokvel', component: StokvetComponent },
     { path: 'transactions', component: TransactionsComponent },
     { path: 'logout', component: LogoutComponent},
