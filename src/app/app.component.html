@@ -1,9 +1,9 @@
-<div *ngIf="!currentUser" class="jumbotron text-center  text" style="margin-bottom:0">
+<div *ngIf="hide" class="jumbotron text-center  text" style="margin-bottom:0">
   <h1>Sika for the Community</h1>
   <p>Start your future as a community today!</p>
 </div>
 
-<nav *ngIf="!currentUser" class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav *ngIf="hide" class="navbar navbar-expand-sm bg-dark navbar-dark">
   <a class="navbar-brand" routerLink="/">Sika</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
@@ -29,7 +29,7 @@
 <main>
   <router-outlet></router-outlet>
 </main>
-<div *ngIf="!currentUser" class="jumbotron text-center bg-dark" style="margin-bottom:0">
+<div *ngIf="hide" class="jumbotron text-center bg-dark" style="margin-bottom:0">
   
 </div>
 

@@ -6,13 +6,13 @@ import { AlertService } from 'src/app/_services/alerts.service';
 import { AuthService } from '../../_services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
+    loginForm: FormGroup;
     loading = false;
     submitted = false;
     returnUrl: string;
@@ -56,18 +56,17 @@ export class LoginComponent implements OnInit {
 
         this.loading = true;
         const user = {
-          email: this.f.username.value,
-          password: this.f.password.value
+            email: this.f.username.value,
+            password: this.f.password.value
         };
         this.authenticationService.login(user)
             .pipe(first())
             .subscribe(
-                data => {
+                () => {
                     this.router.navigate([this.returnUrl]);
                 },
                 error => {
                     this.alertService.error(error);
-                    console.log(error);
                     this.loading = false;
                 });
     }

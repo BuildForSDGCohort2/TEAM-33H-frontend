@@ -18,6 +18,7 @@ import { AlertsComponent } from './shared/alerts/alerts.component';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { AuthGuard } from './helpers/auth.guard';
 import { ErrorInterceptor } from './helpers/error.interceptor';
+import { AuthService } from './_services/auth.service';
 
 @NgModule({
   declarations: [
@@ -40,8 +41,9 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: AuthGuard, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    AuthGuard,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

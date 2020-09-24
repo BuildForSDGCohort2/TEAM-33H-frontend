@@ -10,6 +10,10 @@ import { AuthService } from '../_services/auth.service';
 import { LoginComponent } from './login/login.component';
 import { AlertsComponent } from '../shared/alerts/alerts.component';
 import { SharedModule } from '../shared/shared.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuard } from '@app/helpers/auth.guard';
+import { ErrorInterceptor } from '@app/helpers/error.interceptor';
+import { JwtInterceptor } from '@app/helpers/jwt.interceptor';
 
 
 @NgModule({
@@ -20,8 +24,8 @@ import { SharedModule } from '../shared/shared.module';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
-  ],
-  providers: [AuthService]
+    SharedModule,
+    HttpClientModule
+  ]
 })
 export class UserModule { }
