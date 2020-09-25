@@ -1,8 +1,8 @@
-<section id="register" class="register">
+<section id="register" class="register mb-5">
     <div class="container">
   
       <div class="section-title m-5" data-aos="fade-up">
-        <p class="text-white">Register to get started</p>
+        <p class="text-transparent">Register to get started</p>
       </div>
   
       <div class="row">
@@ -11,7 +11,7 @@
   
         </div>
   
-        <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch text-white" data-aos="fade-up" data-aos-delay="200">
           <form [formGroup]="registrationForm" (ngSubmit)="saveUser(registrationForm.value)" role="form"
             class="php-email-form">
             <div *ngIf="success" class="alert alert-success" role="alert">
@@ -106,13 +106,11 @@
               <p>
                 By creating an account you agree to our <a href="#">Terms & Privacy</a>.
               </p>
-  
-              <button type="submit" class="btn btn-primary float-right">
-                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                Register</button>
+                <button mat-raised-button color="primary" type="submit" class="float-right mb-5">Register</button>
+                <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> --> 
             </div>
   
-            <div class="signin">
+            <div class="signin mb-5">
               <p>Already have an account? <a [routerLink]="'/user/signin'">Sign in</a>.</p>
             </div>
           </form>

@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { IWallet } from '@app/models/wallet.model';
 import { AlertService } from '@app/_services/alerts.service';
 import { WalletService } from '@app/_services/wallet.service';
 export interface PeriodicElement {
@@ -30,11 +31,19 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class TransactionsComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  wallets: any[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private walletService: WalletService, private alertService: AlertService) { }
 
   ngOnInit(): void {
+    this.walletService.retrieveBalance().subscribe(data => {
+      if (data === undefined) {
+        this.wallets = [];
+      }
+      this.wallets = [data];
+    },
+     error => this.alertService.error(error));
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

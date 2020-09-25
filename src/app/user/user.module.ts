@@ -14,6 +14,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from '@app/helpers/auth.guard';
 import { ErrorInterceptor } from '@app/helpers/error.interceptor';
 import { JwtInterceptor } from '@app/helpers/jwt.interceptor';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { JwtInterceptor } from '@app/helpers/jwt.interceptor';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule
   ]
 })
 export class UserModule { }
