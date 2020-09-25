@@ -1,7 +1,5 @@
 import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { User } from './models/user.model';
 import { AuthService } from './_services/auth.service';
 
 @Component({
@@ -13,6 +11,9 @@ export class AppComponent implements OnInit, DoCheck{
   title = 'Sika';
   hide: boolean;
   constructor(private authenService: AuthService, private router: Router) {
+    if (this.authenService.currentUserValue) {
+      this.router.navigate(['/account']);
+  }
   }
   ngOnInit() {
   }
