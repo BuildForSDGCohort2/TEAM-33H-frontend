@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { AlertService } from '@app/_services/alerts.service';
 import { WalletService } from '@app/_services/wallet.service';
 export interface PeriodicElement {
   name: string;
@@ -31,7 +32,7 @@ export class TransactionsComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private walletService: WalletService) { }
+  constructor(private walletService: WalletService, private alertService: AlertService) { }
 
   ngOnInit(): void {
   }
@@ -40,7 +41,8 @@ export class TransactionsComponent implements OnInit, AfterViewInit {
   }
   createWallet() {
     const user = localStorage.getItem('currentUser');
-    this.walletService.createWallet(JSON.parse(user));
+    console.log(user);
+    this.walletService.createWallet(JSON.parse(user)).subscribe(() => { }, error => this.alertService.error(error));
   }
 
 }

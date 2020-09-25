@@ -15,6 +15,7 @@ export class WalletService {
     return this.http.post(`${environment.apiUrl}/api/v1/wallet/create`, user)
     .pipe(map(wallet => {
       this.storeCard(wallet);
+      console.log(wallet);
     }));
   }
   deposit(deposit: IDeposit) {
