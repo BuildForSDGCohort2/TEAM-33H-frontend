@@ -50,7 +50,6 @@ export class TransactionsComponent implements OnInit, AfterViewInit {
   }
   createWallet() {
     const user = localStorage.getItem('currentUser');
-    console.log(user);
     this.walletService.createWallet(JSON.parse(user)).subscribe(() => { }, error => this.alertService.error(error));
   }
 
